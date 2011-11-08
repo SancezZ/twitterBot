@@ -33,7 +33,7 @@ Starten mit Konsole:
 Verbinde TwitterBot mit deinem Twitteraccount
 ---------------------------------------------------
 
-TwitterBot auf deinen Eigenen Account zu benutzer verwende 
+Um TwitterBot auf deinen Eigenen Account zu verwenden
 * "java -jar twitterBot.jar"   
 und verwende als Argumente:   
 args[0]= consumerKey   
