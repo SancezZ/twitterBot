@@ -21,8 +21,8 @@ Start
 Menuefuerung:
 -------------
 
-1 drücken, um einen Benutzer Einen neuen Benutzer zu Folgen
-2 drücken, um da Menue erneut anzeigen zu lassen
+1 druecken, um einen Benutzer Einen neuen Benutzer zu Folgen
+2 druecken, um da Menue erneut anzeigen zu lassen
 3 um das Programm zu beenden.
 
 
@@ -34,9 +34,9 @@ Verbinde TwitterBot mit deinem Twitteraccount
 ---------------------------------------------------
 
 TwitterBot auf deinen Eigenen Account zu benutzer verwende 
-* "java -jar twitterBot.jar"
-und verwende als Argumente
-args[0]= consumerKey
-args[1]= consumerSecret
-args[2]= accessToken
-args[3]= accessTokenSecret
+* "java -jar twitterBot.jar"   
+und verwende als Argumente:   
+args[0]= consumerKey   
+args[1]= consumerSecret   
+args[2]= accessToken   
+args[3]= accessTokenSecret   
