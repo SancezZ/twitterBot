@@ -10,7 +10,7 @@ import twitter4j.conf.ConfigurationBuilder;
 /**
  * 
  * Diese Klasse implementiert einen Bot fuer Twitter der andern Usern
- * folgen kann und diesen automatisch antworten kann.
+ * folgen kann und diesen automatisch Antworten schickt.
  * 
  * @author Andy Klay, Sebastian Minke
  *
@@ -127,7 +127,7 @@ public class TwitterBot extends TimerTask  {
 			twitter.createFriendship(name);
 			System.out.println("Folge Erfolgreich (" + name + ")");
 		} catch (TwitterException te) {
-//			System.err.println("Konnte nicht folgen!");
+			System.err.println("Konnte nicht folgen!");
 		}
 	}
 
