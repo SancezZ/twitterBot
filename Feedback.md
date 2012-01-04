@@ -24,10 +24,6 @@ Diese sollten auch nicht im Code definiert werden, sondern in einer externen Dat
 Leider wird der Check für bereits beantwortete Messages zur Laufzeit wachsen. Es wäre ausreichend die letzte beantwortete Nachricht pro Nutzer zu speichern.
 
 
-***
-####Bewertung: 
-Ich bewerte das Projekt mit *noch* 4 Punkten. Zu zweit wäre um einiges mehr möglich gewesen. Die Verwendung von Github ist eher zweifelhaft. Außerdem scheint Herr Minke weniger Anteil an dem Projekt gehabt zu haben. Zumindest sagt dies die Github Nutzung aus.
-
 
 
 
