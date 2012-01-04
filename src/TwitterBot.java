@@ -9,41 +9,41 @@ import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 /**
  * 
- * Diese Klasse implementiert einen Bot fuer Twitter der andern Usern
- * folgen kann und diesen automatisch Antworten schickt.
+ * Diese Klasse implementiert einen Bot fuer Twitter der andern Usern folgen
+ * kann und diesen automatisch Antworten schickt.
  * 
  * @author Andy Klay, Sebastian Minke
- *
+ * 
  */
-public class TwitterBot extends TimerTask  {
+public class TwitterBot extends TimerTask {
 
 	protected ArrayList<Long> ids = new ArrayList<Long>();
 
 	/**
-	 * twitterschluessel consumerKey
+	 * Twitterschluessel consumerKey
 	 */
 	private String consumerKey;
-	
+
 	/**
-	 * twitterschluessel consumerSecret
+	 * Twitterschluessel consumerSecret
 	 */
 	private String consumerSecret;
-	
+
 	/**
-	 * twitterschluessel accessToken
+	 * Twitterschluessel accessToken
 	 */
 	private String accessToken;
-	
+
 	/**
-	 * twitterschluessel accessTokenSecret
+	 * Twitterschluessel accessTokenSecret
 	 */
 	private String accessTokenSecret;
-	
+
 	/**
 	 * Nachrichtenzaehler
 	 */
-	private long messageCounter=0;
-	
+	private long messageCounter = 0;
+
 	/**
 	 * Standardantwort
 	 */
@@ -56,16 +56,18 @@ public class TwitterBot extends TimerTask  {
 
 	/**
 	 * Konstruktor
+	 * 
 	 * @param consumerKey
 	 * @param consumerSecret
 	 * @param accessToken
 	 * @param accessTokenSecret
 	 */
-	public TwitterBot(String consumerKey, String consumerSecret, String accessToken, String accessTokenSecret) {
-		this.consumerKey=consumerKey;
-		this.consumerSecret=consumerSecret;
-		this.accessToken=accessToken;
-		this.accessTokenSecret=accessTokenSecret;
+	public TwitterBot(String consumerKey, String consumerSecret,
+			String accessToken, String accessTokenSecret) {
+		this.consumerKey = consumerKey;
+		this.consumerSecret = consumerSecret;
+		this.accessToken = accessToken;
+		this.accessTokenSecret = accessTokenSecret;
 	}
 
 	/**
@@ -79,7 +81,8 @@ public class TwitterBot extends TimerTask  {
 		configBuilder.setOAuthAccessToken(accessToken);
 		configBuilder.setOAuthAccessTokenSecret(accessTokenSecret);
 
-		TwitterFactory twitterFactory = new TwitterFactory(configBuilder.build());
+		TwitterFactory twitterFactory = new TwitterFactory(
+				configBuilder.build());
 		this.twitter = twitterFactory.getInstance();
 	}
 
@@ -99,15 +102,16 @@ public class TwitterBot extends TimerTask  {
 	 * checke Kontakte ab und antworte falls nötig.
 	 */
 	public void checkToAnswer() {
-		
+
 		try {
 			List<Status> stats;
 			stats = twitter.getMentions();
-				
+
 			for (Status status : stats) {
 				if (isNotYetAnswered(ids, status.getId())) {
 					messageCounter++;
-					 update("@" + status.getUser().getScreenName() + STANDARD_ANSWER + " ("+ messageCounter +")");
+					update("@" + status.getUser().getScreenName()
+							+ STANDARD_ANSWER + " (" + messageCounter + ")");
 				}
 			}
 		} catch (TwitterException te) {
@@ -116,10 +120,10 @@ public class TwitterBot extends TimerTask  {
 	}
 
 	/**
-	 * Setzt angegegeben User auf Folgen.
+	 * Setzt angegegeben User auf folgen.
 	 * 
-	 * @param name 
-	 * 			(Name des zu folgenden Users )
+	 * @param name
+	 *            (Name des zu folgenden Users )
 	 */
 	public void followTwitterUser(String name) {
 
@@ -133,11 +137,11 @@ public class TwitterBot extends TimerTask  {
 
 	/**
 	 * 
-	 * Überprüft ob die auf eine Nachricht schonmal geantwortet wurde.
+	 * Überprüft ob auf eine Nachricht schonmal geantwortet wurde.
+	 * 
 	 * @param ids
 	 * @param id
-	 * @return
-	 * 		(true, wenn schon auf die Nachricht geantwortet wurde)
+	 * @return (true, wenn schon auf die Nachricht geantwortet wurde)
 	 */
 	public boolean isNotYetAnswered(List<Long> ids, long id) {
 
@@ -149,19 +153,19 @@ public class TwitterBot extends TimerTask  {
 		}
 	}
 
-	
 	/**
 	 * setzt einen neuen Status des Twitteraccounts
 	 * 
 	 * @param message
-	 *        (Nachricht die im geschrieben werden soll)
-	 */	
+	 *            (Nachricht die geschrieben werden soll)
+	 */
 	public void update(String message) {
 
 		try {
 			Status status = twitter.updateStatus(message);
-			System.out.println("Erfolgreich updated zu (" + status.getText()+ ")");
-		} catch (TwitterException te) {	
+			System.out.println("Erfolgreich updated zu (" + status.getText()
+					+ ")");
+		} catch (TwitterException te) {
 			System.err.println("Konnte nicht updaten!");
 		}
 	}
